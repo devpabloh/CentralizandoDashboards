@@ -1,0 +1,1 @@
+// HTTP: recebe req, devolve res (controller nunca fala diretamente com o banco de dados, apenas chama o service)

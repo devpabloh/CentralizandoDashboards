@@ -1,0 +1,25 @@
+services:
+  backend:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./apps/backend:/app
+      - /app/node_modules
+      - sqlite_data:/app/prisma/data
+    ports:
+      - "3333:3333"
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+
+  redis: 
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+volumes:
+  sqlite_data:
+  redis_data:
